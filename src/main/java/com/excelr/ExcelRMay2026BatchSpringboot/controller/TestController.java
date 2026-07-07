@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController {
 
-	@RequestMapping("/test")
+	@RequestMapping("/test")  //endpoint
 	public String test()
 	{
 		return "This is my first springboot";
