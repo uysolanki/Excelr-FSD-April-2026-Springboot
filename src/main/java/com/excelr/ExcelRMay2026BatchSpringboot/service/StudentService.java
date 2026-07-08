@@ -12,8 +12,8 @@ public class StudentService {
 	@Autowired
 	StudentRepository studentRepository;  //Hibernate session
 
-	public void saveStudent(Student s1) {
-		studentRepository.save(s1);
+	public Student saveStudent(Student s1) {
+		return studentRepository.save(s1);
 		
 	}
 }
