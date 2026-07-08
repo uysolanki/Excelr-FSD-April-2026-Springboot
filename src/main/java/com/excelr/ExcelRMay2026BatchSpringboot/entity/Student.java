@@ -27,16 +27,19 @@ public class Student {
 		
 		static private String collegeName="Kendra Vidyalay"; //exclude
 		
-		public Student() {}
-		public Student(int rno, String sname, double per) {
+		public Student() {}   //NoArgsConstructor
+		public Student(int rno, String sname, double per) //AllArgsConstructor
+		{
 			this.rno = rno;
 			this.sname = sname;
 			this.per = per;
 		}
-		public int getRno() {
+		public int getRno() 		//Getter 
+		{
 			return rno;
 		}
-		public void setRno(int rno) {
+		public void setRno(int rno) //Setter
+		{
 			this.rno = rno;
 		}
 		public String getSname() {
@@ -52,7 +55,8 @@ public class Student {
 			this.per = per;
 		}
 		@Override
-		public String toString() {
+		public String toString() //ToString
+		{
 			return "Student [rno=" + rno + ", sname=" + sname + ", per=" + per + "]";
 		}
 		
