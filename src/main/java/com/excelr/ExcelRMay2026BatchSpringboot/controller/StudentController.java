@@ -136,7 +136,7 @@ public class StudentController {
 	@GetMapping("/get-all-department-names")  //select
 	public List<String> getAllDepartmentNames()
 	{
-		List<String> departmentNames=studentService.getAllDepartmentNames();
+		List<String> departmentNames=studentService.getAllDepartmentNames1();
 		return departmentNames;
 	}
 	

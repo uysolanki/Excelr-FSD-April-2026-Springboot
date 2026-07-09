@@ -45,6 +45,14 @@ public class StudentService {
 	public List<String> getAllDepartmentNames() {
 		return studentRepository.getDistinctByDepartment();
 	}
+	
+	public List<String> getAllDepartmentNames1() {
+		List<Student> students=getAllStudents();
+		return students.stream()
+		.map(Student::getDepartment)
+		.distinct()
+		.toList();
+	}
 
 	public List<Student> getStudentsGreaterThanCertainPercentage(double basePercentage) {
 		return studentRepository.findByPerGreaterThan(basePercentage);
