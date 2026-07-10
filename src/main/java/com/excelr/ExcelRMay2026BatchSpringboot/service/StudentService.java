@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.excelr.ExcelRMay2026BatchSpringboot.entity.Student;
+import com.excelr.ExcelRMay2026BatchSpringboot.exception.StudentNotFoundException;
 import com.excelr.ExcelRMay2026BatchSpringboot.repository.StudentRepository;
 
 @Service
@@ -56,5 +57,32 @@ public class StudentService {
 
 	public List<Student> getStudentsGreaterThanCertainPercentage(double basePercentage) {
 		return studentRepository.findByPerGreaterThan(basePercentage);
+	}
+
+	public void deleteStudent(int rollnumber) throws StudentNotFoundException
+	{
+		if(studentRepository.existsById(rollnumber))
+		{	
+		studentRepository.deleteById(rollnumber);
+		}
+		else 
+			throw new StudentNotFoundException("Student with Roll Number "+rollnumber + " not found");
+		
+	}
+
+	public void updateStudent(int rollnumber, Student updatedValues) {
+		if(studentRepository.existsById(rollnumber))
+		{	
+		//logic for update
+			Student studFromDb=getSingleStudent(rollnumber);
+			studFromDb.setDepartment(updatedValues.getDepartment());
+			studFromDb.setDob(updatedValues.getDob());
+			studFromDb.setMobileNumber(updatedValues.getMobileNumber());
+			studFromDb.setPer(updatedValues.getPer());
+			studFromDb.setSname(updatedValues.getSname());
+			studentRepository.save(studFromDb);
+		}
+		else 
+			throw new StudentNotFoundException("Student with Roll Number "+rollnumber + " not found");
 	}
 }
