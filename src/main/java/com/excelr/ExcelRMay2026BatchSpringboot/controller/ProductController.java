@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.excelr.ExcelRMay2026BatchSpringboot.entity.Product;
+import com.excelr.ExcelRMay2026BatchSpringboot.exception.ProductNotFoundException;
 import com.excelr.ExcelRMay2026BatchSpringboot.service.ProductService;
 
 @RestController
@@ -53,13 +54,27 @@ public class ProductController {
 	@DeleteMapping("/delete-product/{prodid}")
 	public ResponseEntity<String> deleteProduct(@PathVariable int prodid)
 	{
+		try
+		{
 		productService.deleteProduct(prodid);
 		return new ResponseEntity<String>("Product with ID "+ prodid+ " deleted",HttpStatus.OK);
+		}
+		catch(ProductNotFoundException ex1)
+		{
+			return new ResponseEntity<String>(ex1.getMessage(),HttpStatus.OK);
+		}
 	}
 	
 	@PutMapping("/update-product/{prodid}")
-	public ResponseEntity<Product> updateProduct(@PathVariable int prodid,@RequestBody Product updatedProduct)
+	public ResponseEntity<?> updateProduct(@PathVariable int prodid,@RequestBody Product updatedProduct)
 	{
+		try
+		{
 		return new ResponseEntity<Product>(productService.updateProduct(prodid,updatedProduct),HttpStatus.OK);
+		}
+		catch(ProductNotFoundException ex1)
+		{
+			return new ResponseEntity<String>(ex1.getMessage(),HttpStatus.OK);
+		}
 	}
 }
