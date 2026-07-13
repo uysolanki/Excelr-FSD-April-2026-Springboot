@@ -43,9 +43,10 @@ public class ProductService {
 		{
 			productRepository.deleteById(prodid);
 		}
-		
+		else
+		{
 		throw new ProductNotFoundException("Product with ID " +prodid + " does not exist");
-		
+		}
 	}
 
 	public Product updateProduct(int prodid, Product updatedProduct) {
