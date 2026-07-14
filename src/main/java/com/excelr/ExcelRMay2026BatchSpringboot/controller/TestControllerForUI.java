@@ -3,6 +3,7 @@ package com.excelr.ExcelRMay2026BatchSpringboot.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -43,6 +44,51 @@ public class TestControllerForUI {
 		ModelAndView mav =new ModelAndView();
 		mav.setViewName("ipl");
 		mav.addObject("player",p1);
+		
+		return mav; //there should be an html file by this name in the resources/templates folder
+	}
+	
+	
+	@RequestMapping("/sports")  //endpoint
+	public ModelAndView sports()
+	{
+		int flag=0;
+		Player p1=null;
+		ModelAndView mav =new ModelAndView();
+		if(flag==1)
+		{
+		p1=new Player(7,"MSD", 200,8000);
+		mav.setViewName("ipl");
+		mav.addObject("player",p1);
+		}
+		else
+		{
+		p1=new Player(7,"Ronaldo", 200,8000);
+		mav.setViewName("epl");
+		mav.addObject("player",p1);
+		}
+		
+		return mav; //there should be an html file by this name in the resources/templates folder
+	}
+	
+	
+	@RequestMapping("/sports1/{flag}")  //endpoint
+	public ModelAndView sports1(@PathVariable int flag)
+	{
+		Player p1=null;
+		ModelAndView mav =new ModelAndView();
+		if(flag==1)
+		{
+		p1=new Player(7,"MSD", 200,8000);
+		mav.setViewName("ipl");
+		mav.addObject("player",p1);
+		}
+		else
+		{
+		p1=new Player(7,"Ronaldo", 200,8000);
+		mav.setViewName("epl");
+		mav.addObject("player",p1);
+		}
 		
 		return mav; //there should be an html file by this name in the resources/templates folder
 	}
