@@ -19,7 +19,7 @@ import com.excelr.ExcelRMay2026BatchSpringboot.entity.Student;
 import com.excelr.ExcelRMay2026BatchSpringboot.exception.StudentNotFoundException;
 import com.excelr.ExcelRMay2026BatchSpringboot.service.StudentService;
 
-@RestController
+@RestController //to return raw JSON data
 public class StudentController {
 	
 	@Autowired
