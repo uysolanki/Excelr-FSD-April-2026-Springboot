@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.excelr.ExcelRMay2026BatchSpringboot.controller.ProductController;
 import com.excelr.ExcelRMay2026BatchSpringboot.entity.Product;
 import com.excelr.ExcelRMay2026BatchSpringboot.exception.ProductNotFoundException;
 import com.excelr.ExcelRMay2026BatchSpringboot.repository.ProductRepository;

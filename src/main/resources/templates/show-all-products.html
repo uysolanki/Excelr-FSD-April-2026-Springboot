@@ -13,7 +13,7 @@
 
 <body>
 <div class="container mt-5">
-	<a th:href="@{/addProductForm}" class="btn btn-primary mb-4">Add Product</a>
+	<a th:href="@{/add-new-product-form}" class="btn btn-primary mb-4">Add Product</a>
 	
 	
     
@@ -26,6 +26,7 @@
             <th>Product Description</th>
             <th>Product Category</th>
             <th>Product Price</th>
+            <th>Product Image</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +36,13 @@
             <td th:text="${product.description}"></td>
             <td th:text="${product.category}"></td>
             <td th:text="${product.price}"></td>
+            
+            <td>
+                <img th:src="${product.image}"
+                     width="80"
+                     height="80"
+                     style="object-fit:cover;">
+            </td>
            </tr>
         </tbody>
     </table>
