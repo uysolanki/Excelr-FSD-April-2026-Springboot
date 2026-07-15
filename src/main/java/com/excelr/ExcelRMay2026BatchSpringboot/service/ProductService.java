@@ -48,19 +48,21 @@ public class ProductService {
 		}
 	}
 
-	public Product updateProduct(int prodid, Product updatedProduct) {
+	public void updateProduct(int prodid, Product updatedProduct) {
 		if(productRepository.existsById(prodid))
 		{
 			Product productFromDB=getSingleProduct(prodid);
 			productFromDB.setCategory(updatedProduct.getCategory());
 			productFromDB.setDescription(updatedProduct.getDescription());
-			productFromDB.setImage(updatedProduct.getImage());
+			//productFromDB.setImage(updatedProduct.getImage());
 			productFromDB.setPrice(updatedProduct.getPrice());
 			productFromDB.setTitle(updatedProduct.getTitle());
-			return productRepository.save(productFromDB);
+			productRepository.save(productFromDB);
 		}
-		
+		else
+		{		
 		throw new ProductNotFoundException("Product with ID " +prodid + " does not exist");
+		}
 	}
 
 }
