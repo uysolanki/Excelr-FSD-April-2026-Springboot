@@ -21,7 +21,7 @@ public class MyWebSecurity2
 	    @Bean  
 	    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 	    	 //Authentication
-	        http.authenticationProvider(myAuthenticationProvider());
+	        http.authenticationProvider(myAuthenticationProvider()); //spoc
 	    	
 	        //Authorisation
 	        http.authorizeRequests()
